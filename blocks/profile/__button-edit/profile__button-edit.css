@@ -7,6 +7,13 @@
     background-color: #000000;
     border: 1px solid #FFFFFF;
     margin-left: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.profile__button-edit:active{
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 700px) {
