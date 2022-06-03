@@ -1,4 +1,5 @@
 .profile__button-edit {
+    background-image: url(../../../images/Edit_button.png);
     display: flex;
     align-items: center;
     justify-content: center;

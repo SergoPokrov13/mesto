@@ -1,4 +1,4 @@
-.elements {
+.elements__list {
     margin: 0;
     list-style: none;
     max-width: 880px;
@@ -10,7 +10,7 @@
 }
 
  @media screen and (max-width: 880px) {
-    .elements {
+    .elements__list {
         margin: 0 19px 0;
         padding-top: 36px;
     }

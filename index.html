@@ -13,7 +13,6 @@
     <div class="root">
         <header class="header">
             <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
-            <div class="header__line"></div>
         </header>
 
         <main class="content">
@@ -22,81 +21,80 @@
                     <img class="profile__avatar" src="./images/profile_logo.jpg" alt="Аватарка">
                     <div class="profile__info">
                         <div class="profile__info-column">
-                            <h2 class="profile__name">Жак-Ив Кусто</h2>
-                            <button class="profile__button-edit"><img src="./images/Edit_button.png"
-                                    alt="Кнопка редактирования"></button>
+                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <button type="button" class="profile__button-edit"></button>
                         </div>
                         <p class="profile__text">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="profile__button-add"><img src="./images/Add_button.png" alt="Кнопка добавления"></button>
+                <button type="button" class="profile__button-add"></button>
             </section>
-            <section>
-                <ul class="elements">
+            <section class="elements">
+                <ul class="elements__list">
                     <li class="element">
                         <img class="element__img" src="./images/karachevsk.jpg" alt="Карачевск">
                         <div class="element__info">
                             <h2 class="element__title">Карачевск</h2>
-                            <button class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
+                            <button type="buttontype=" button" " class=" element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__img" src="./images/Elbrus.png" alt="Ельбрус">
                         <div class="element__info">
                             <h2 class="element__title">Гора Эльбрус</h2>
-                            <button class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
+                            <button type="button" class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__img" src="./images/Dombay.png" alt="Домбай">
                         <div class="element__info">
                             <h2 class="element__title">Домбай</h2>
-                            <button class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
+                            <button type="button" class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__img" src="./images/London.jpg" alt="Лондон">
                         <div class="element__info">
                             <h2 class="element__title">Лондон</h2>
-                            <button class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
+                            <button type="button" class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__img" src="./images/Karachay-Cherkessia.jpg" alt="Карачаево-Черкесия">
                         <div class="element__info">
                             <h2 class="element__title">Карачаево-Черкесия</h2>
-                            <button class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
+                            <button type="button" class="element__like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img class="element__img" src="./images/New-York.jpg" alt="Нью-Йорк">
                         <div class="element__info">
                             <h2 class="element__title">Нью-Йорк</h2>
-                            <button class="element__like"><img src="./images/Like.svg" alt="Лайк"></button>
+                            <button type="button" class="element__like"></button>
                         </div>
                     </li>
                 </ul>
             </section>
-            <footer class="footer">
-                <p class="footer__data">© 2020 Mesto Russia</p>
-            </footer>
         </main>
+        <footer class="footer">
+            <p class="footer__data">© 2020 Mesto Russia</p>
+        </footer>
 
         <div class="popup">
             <div class="popup__content">
-              <button class="popup__close"></button>
-              <h2 class="popup__title">Редактировать профиль</h2>
-              <form class="popup__form">
-                <input type="text" class="popup__input popup__input_title">
-                <input type="text" class="popup__input popup__input_subtitle">
-                <button type="submit" class="popup__button-submit">Сохранить</button>
-              </form>
+                <button type="button" class="popup__close"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form name="Редактирование" class="popup__form">
+                    <input name="Редакстирование Имени" type="text" class="popup__input popup__input_title_text">
+                    <input name="Редактирование Информации" type="text" class="popup__input popup__input_subtitle_text">
+                    <button type="submit" class="popup__button-submit">Сохранить</button>
+                </form>
             </div>
-          </div>
+        </div>
 
-        <script src="./script/index.js"></script>
+        <script src="./scripts/index.js"></script>
 
-</div>
+    </div>
 </body>
 
 </html>
