@@ -18,17 +18,21 @@ closePopupButton.addEventListener('click', function(event){
 
 formPopup.addEventListener('submit', function(event){
     event.preventDefault();
-    nameProfile.textContent = toFormNameProfile.value;
-    infoProfile.textContent = toFormInfoProfile.value;
-    closePopup(popup);
+    submitPopup();
 });
 
 function openPopup(popupElement) {
-    popupElement.classList.add('popup__content_open');    
+    popupElement.classList.add('popup_opened');    
     toFormNameProfile.value = nameProfile.textContent;
     toFormInfoProfile.value = infoProfile.textContent;
 }
 
 function closePopup(popupElement) {
-    popupElement.classList.remove('popup__content_open');    
+    popupElement.classList.remove('popup_opened');    
+}
+
+function submitPopup(){
+    nameProfile.textContent = toFormNameProfile.value;
+    infoProfile.textContent = toFormInfoProfile.value;
+    closePopup(popup);
 }
