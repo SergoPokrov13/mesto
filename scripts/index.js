@@ -1,11 +1,11 @@
-const popup = document.querySelector('.popup-profile');
+const popupEditName = document.querySelector('.popup-profile');
 const editButton = document.querySelector('.profile__button-edit');
-const closePopupButton = document.querySelector('.popup__close');
-const formPopup = document.querySelector('.popup__form');
+const closePopupEditNameButton = popupEditName.querySelector('.popup__close');
+const formPopupEditName = popupEditName.querySelector('.popup__form');
 const nameProfile = document.querySelector('.profile__name');
 const infoProfile = document.querySelector('.profile__text');
-const toFormNameProfile = popup.querySelector('.popup__input_type_name');
-const toFormInfoProfile = popup.querySelector('.popup__input_type_job');
+const toFormNameProfile = popupEditName.querySelector('.popup__input_type_name');
+const toFormInfoProfile = popupEditName.querySelector('.popup__input_type_job');
 const cardListElement = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('.template__card').content;
 const addButton = document.querySelector('.profile__button-add');
@@ -16,34 +16,8 @@ const toFormNameCards = popupCards.querySelector('.popup__input_type_name');
 const toFormLinkCards = popupCards.querySelector('.popup__input_type_job');
 const popupElement = document.querySelector('.popup-element');
 const closePopupElement = popupElement.querySelector('.popup-element__close');
-
-
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+const popupElemenImg = popupElement.querySelector('.popup-element__img');
+const popupElemetInfo = popupElement.querySelector('.popup-element__title');    
 
 const createCard = (name, link) => {
     const card = cardTemplate
@@ -52,20 +26,20 @@ const createCard = (name, link) => {
 
     card.querySelector('.element__title').textContent = name;
     card.querySelector('.element__img').src = link;
+    card.querySelector('.element__img').alt = name;
     addListener(card);
+    return card;
+}
+
+const publickCard = card => {
     cardListElement.prepend(card);
 
-    const cardImage = card.querySelector('.element__img');
-
-    cardImage.addEventListener('click', function (evt) {
-        const infoCard = evt.target.closest('.element');
-        addPopupElement(infoCard);
-    });
 }
 
 const addPopupElement = card => {
-    popupElement.querySelector('.popup-element__img').src = card.querySelector('.element__img').src;
-    popupElement.querySelector('.popup-element__title').textContent = card.querySelector('.element__title').textContent;
+    popupElemenImg.src = card.querySelector('.element__img').src;
+    popupElemenImg.alt = card.querySelector('.element__img').alt;
+    popupElemetInfo.textContent = card.querySelector('.element__title').textContent;
     openPopup(popupElement);
 }
 
@@ -80,62 +54,72 @@ const addListener = card => {
         const card = evt.target.closest('.element');
         card.remove();
     });
+
+    const cardImage = card.querySelector('.element__img');
+    cardImage.addEventListener('click', function (evt) {
+        const infoCard = evt.target.closest('.element');
+        addPopupElement(infoCard);
+    });
 }
 
 initialCards.forEach((item) => {
-    createCard(item.name, item.link);
+    const card = createCard(item.name, item.link);
+    publickCard(card);
 });
 
-const addCard = e => {
-    e.preventDefault();
+const addCard = evt => {
+    evt.preventDefault();
     const name = toFormNameCards.value;
     const link = toFormLinkCards.value;
-    createCard(name, link);
+    const card = createCard(name, link);
+    publickCard(card);
     closePopup(popupCards);
-
 }
 
-addButton.addEventListener('click', ()=> {
+addButton.addEventListener('click', () => {
     openPopup(popupCards);
-    toFormNameCards.value = '';
-    toFormLinkCards.value = '';
+    popupCardsForm.reset();
 });
 
-editButton.addEventListener('click', ()=> {
-    openPopup(popup);
+editButton.addEventListener('click', () => {
+    openPopupProfile(popupEditName);
 });
 
-closePopupButton.addEventListener('click', ()=> {
-    closePopup(popup);
+closePopupEditNameButton.addEventListener('click', () => {
+    closePopup(popupEditName);
 });
 
-closePopupCards.addEventListener('click', ()=> {
+closePopupCards.addEventListener('click', () => {
     closePopup(popupCards);
 });
 
-closePopupElement.addEventListener('click', ()=> {
+closePopupElement.addEventListener('click', () => {
     closePopup(popupElement);
 });
 
-formPopup.addEventListener('submit', ()=> {
-    submitPopup();
+formPopupEditName.addEventListener('submit', (evt) => {
+    submitPopupProfile(evt);
 });
 
 popupCardsForm.addEventListener('submit', addCard);
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
+}
+
+function openPopupProfile(popupElement){
     toFormNameProfile.value = nameProfile.textContent;
     toFormInfoProfile.value = infoProfile.textContent;
+    openPopup(popupElement)
 }
 
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
 }
 
-function submitPopup() {
-    event.preventDefault();
+function submitPopupProfile(evt) {
+    evt.preventDefault();
     nameProfile.textContent = toFormNameProfile.value;
     infoProfile.textContent = toFormInfoProfile.value;
-    closePopup(popup);
+    closePopup(popupEditName);
 }

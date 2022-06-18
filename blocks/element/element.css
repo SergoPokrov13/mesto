@@ -1,8 +1,7 @@
 .element {
     line-height: 0;
-    width: 100%;
-    min-height: 360px;
-    background: #FFFFFF;
-    border-radius: 10px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }

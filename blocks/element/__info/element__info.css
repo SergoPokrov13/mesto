@@ -1,7 +1,9 @@
 .element__info {
-    max-width: 246px;
-    margin: auto;
-    margin-top: 25px;
+    background-color: #FFFFFF;
+    height: 80px;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
 }
