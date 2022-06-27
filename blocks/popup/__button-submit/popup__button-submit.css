@@ -1,7 +1,7 @@
 .popup__button-submit {
     height: 50px;
     width: 85%;
-    margin: 48px 0 0 0;
+    margin: 48px 0 35px 0;
     background-color: black;
     color: #FFFFFF;
     cursor: pointer;
@@ -15,7 +15,7 @@
     border-radius: 2px;
 }
 
-.popup__button-submit_invalid{
+.popup__button-submit:disabled{
     background: #E5E5E5;
     opacity: 0.2;
     color: #000000;
@@ -30,7 +30,7 @@
     }
 }
 
-.popup__button-submit:hover {
+.popup__button-submit_hover:hover {
     opacity: 0.8;
 }
 

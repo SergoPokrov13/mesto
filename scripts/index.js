@@ -12,14 +12,12 @@ const addButton = document.querySelector('.profile__button-add');
 const popupCards = document.querySelector('.popup-cards');
 const closePopupCards = popupCards.querySelector('.popup__close');
 const popupCardsForm = popupCards.querySelector('.popup__form');
-const toFormNameCards = popupCards.querySelector('.popup__input_type_names');
+const toFormNameCards = popupCards.querySelector('.popup__input_type_name');
 const toFormLinkCards = popupCards.querySelector('.popup__input_type_link');
 const popupElement = document.querySelector('.popup-element');
 const closePopupElement = popupElement.querySelector('.popup-element__close');
 const popupElemenImg = popupElement.querySelector('.popup-element__img');
 const popupElemetInfo = popupElement.querySelector('.popup-element__title');
-const popupProfileBtnSubmit = popupEditName.querySelector('.popup__button-submit');
-const inputListProfile = Array.from(popupEditName.querySelectorAll('.popup__input'));
 
 const createCard = (name, link) => {
     const card = cardTemplate
@@ -112,7 +110,7 @@ function openPopup(popupElement) {
 function openPopupProfile(popupElement) {
     toFormNameProfile.value = nameProfile.textContent;
     toFormInfoProfile.value = infoProfile.textContent;
-    openPopup(popupElement)
+    openPopup(popupElement);
 }
 
 function closePopup(popupElement) {
@@ -126,37 +124,19 @@ function submitPopupProfile(evt) {
     closePopup(popupEditName);
 }
 
-// const formProfileValidate = inputEl => {
-//     return (inputEl.checkValidity());
-// }
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+});
 
-// const activateError = (errorEl, message) => {
-//     const inputEl = document.querySelector(`.popup__input_type_${errorEl.id}`);
-//     inputEl.classList.add('popup__input_invalid');
-//     errorEl.textContent = message;
-// }
-
-// const resetError = errorEl =>{
-
-//     const inputEl = document.querySelector(`.popup__input_type_${errorEl.id}`);
-//     inputEl.classList.remove('popup__input_invalid');
-//     popupProfileBtnSubmit.classList.add('popup__button-submit_invalid');
-//     console.dir(popupProfileBtnSubmit);
-//     errorEl.textContent = "";
-
-// }
-
-// popupProfileBtnSubmit.addEventListener('click', () => {
-//     inputListProfile.forEach(function (inputEl) {
-//             const errorEl = document.querySelector(`.error-${inputEl.id}`);
-//         if (!formProfileValidate(inputEl)) {
-//             activateError(errorEl, inputEl.validationMessage);
-//         }else{
-//             resetError(errorEl);
-//         }
-//     });
-// });
-
+document.body.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup')) {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+})
 
 
 
