@@ -1,5 +1,5 @@
 .popup__input{
-    width: 85%;
+    width: 100%;
     margin: 0 auto;
     font-style: normal;
     font-weight: 400;
@@ -9,4 +9,12 @@
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     outline: none;
+}
+
+.popup__input:invalid{
+    border-bottom: 1px solid red;
+}
+
+.popup__input_type_error{
+    border-bottom: 1px solid #FF0000;
 }
