@@ -1,13 +1,13 @@
 const config = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
+    submitButtonSelector: '.popup__button-submit',
     inactiveButtonClass: 'popup__button-submit_disabled',
     inputErrorClass: 'popup__input_type-error',
 };
-const formPopup = document.querySelectorAll(config.formSelector);
 
 const enableValidation = (config) => {
+    const formPopup = document.querySelectorAll(config.formSelector);
     formPopup.forEach(form => {
         form.addEventListener('submit', (evt) =>
             evt.preventDefault());
@@ -17,7 +17,7 @@ const enableValidation = (config) => {
 
 const setListenerInput = (form, config) => {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
-    const popupBtnSubmit = form.querySelector('.popup__button-submit');
+    const popupBtnSubmit = form.querySelector(config.submitButtonSelector);
 
     inputList.forEach(function (inputEl) {
         inputEl.addEventListener('input', () => {

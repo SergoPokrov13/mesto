@@ -105,6 +105,7 @@ popupCardsForm.addEventListener('submit', addCard);
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupKey);
 }
 
 function openPopupProfile(popupElement) {
@@ -115,6 +116,7 @@ function openPopupProfile(popupElement) {
 
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupKey);
 }
 
 function submitPopupProfile(evt) {
@@ -124,12 +126,12 @@ function submitPopupProfile(evt) {
     closePopup(popupEditName);
 }
 
-document.addEventListener('keydown', (evt) => {
+const closePopupKey = (evt) => {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     }
-});
+};
 
 document.body.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup')) {
