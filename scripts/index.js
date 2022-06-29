@@ -1,3 +1,4 @@
+const page = document.querySelector('.root');
 const popupEditName = document.querySelector('.popup-profile');
 const editButton = document.querySelector('.profile__button-edit');
 const closePopupEditNameButton = popupEditName.querySelector('.popup__close');
@@ -10,6 +11,7 @@ const cardListElement = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('.template__card').content;
 const addButton = document.querySelector('.profile__button-add');
 const popupCards = document.querySelector('.popup-cards');
+const BtnSubmit = popupCards.querySelector('.popup__button-submit')
 const closePopupCards = popupCards.querySelector('.popup__close');
 const popupCardsForm = popupCards.querySelector('.popup__form');
 const toFormNameCards = popupCards.querySelector('.popup__input_type_name');
@@ -25,18 +27,19 @@ const createCard = (name, link) => {
         .cloneNode(true);
 
     card.querySelector('.element__title').textContent = name;
-    card.querySelector('.element__img').src = link;
-    card.querySelector('.element__img').alt = name;
+    const image = card.querySelector('.element__img');
+    image.src = link;
+    image.alt = name;
     addListener(card);
     return card;
 }
 
-const publickCard = card => {
+const prependCard = card => {
     cardListElement.prepend(card);
 
 }
 
-const addPopupElement = card => {
+const openImagePopup = card => {
     popupElemenImg.src = card.querySelector('.element__img').src;
     popupElemenImg.alt = card.querySelector('.element__img').alt;
     popupElemetInfo.textContent = card.querySelector('.element__title').textContent;
@@ -56,15 +59,14 @@ const addListener = card => {
     });
 
     const cardImage = card.querySelector('.element__img');
-    cardImage.addEventListener('click', function (evt) {
-        const infoCard = evt.target.closest('.element');
-        addPopupElement(infoCard);
+    cardImage.addEventListener('click', () => {
+        openImagePopup(card);
     });
 }
 
 initialCards.forEach((item) => {
     const card = createCard(item.name, item.link);
-    publickCard(card);
+    prependCard(card);
 });
 
 const addCard = evt => {
@@ -72,13 +74,13 @@ const addCard = evt => {
     const name = toFormNameCards.value;
     const link = toFormLinkCards.value;
     const card = createCard(name, link);
-    publickCard(card);
+    prependCard(card);
     closePopup(popupCards);
 }
 
 addButton.addEventListener('click', () => {
-    openPopup(popupCards);
-    popupCardsForm.reset();
+        openPopup(popupCards);
+        disableButtonForm(BtnSubmit);
 });
 
 editButton.addEventListener('click', () => {
@@ -101,11 +103,14 @@ formPopupEditName.addEventListener('submit', (evt) => {
     submitPopupProfile(evt);
 });
 
-popupCardsForm.addEventListener('submit', addCard);
+popupCardsForm.addEventListener('submit', (evt) => {
+    addCard(evt);
+    popupCardsForm.reset();
+});
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupKey);
+    document.addEventListener('keydown', handleEscKey);
 }
 
 function openPopupProfile(popupElement) {
@@ -116,7 +121,7 @@ function openPopupProfile(popupElement) {
 
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupKey);
+    document.removeEventListener('keydown', handleEscKey);
 }
 
 function submitPopupProfile(evt) {
@@ -126,17 +131,16 @@ function submitPopupProfile(evt) {
     closePopup(popupEditName);
 }
 
-const closePopupKey = (evt) => {
+const handleEscKey = (evt) => {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     }
 };
 
-document.body.addEventListener('click', (evt) => {
+page.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup')) {
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
+        closePopup(evt.target);
     }
 })
 

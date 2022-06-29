@@ -24,9 +24,6 @@ const setListenerInput = (form, config) => {
             handleInputValid(form, inputEl, config);
             toggleButtonForm(inputList, popupBtnSubmit, config);
         });
-        addButton.addEventListener('click', () => {
-            toggleButtonForm(inputList, popupBtnSubmit, config);
-        });
     });
 }
 
@@ -39,7 +36,6 @@ const handleInputValid = (form, inputEl, config) => {
         inputEl.classList.add(config.inputErrorClass);
         errorEl.textContent = inputEl.validationMessage;
     }
-
 }
 
 const hasInputElValid = (inputList) => {
@@ -47,11 +43,11 @@ const hasInputElValid = (inputList) => {
         return !inputElement.validity.valid;
     });
 }
+ 
+const toggleButtonForm= (inputList, popupBtnSubmit, config) => {
+    const inputs = hasInputElValid(inputList);
 
-const toggleButtonForm = (inputList, popupBtnSubmit, config) => {
-    const Inputs = hasInputElValid(inputList);
-
-    if (Inputs) {
+    if (inputs) {
         disableButtonForm(popupBtnSubmit, config.inactiveButtonClass);
 
     } else {
