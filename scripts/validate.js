@@ -25,6 +25,7 @@ const setListenerInput = (form, config) => {
             toggleButtonForm(inputList, popupBtnSubmit, config);
         });
     });
+    toggleButtonForm(inputList, popupBtnSubmit, config);
 }
 
 const handleInputValid = (form, inputEl, config) => {

@@ -1,4 +1,3 @@
-const page = document.querySelector('.root');
 const popupEditName = document.querySelector('.popup-profile');
 const editButton = document.querySelector('.profile__button-edit');
 const closePopupEditNameButton = popupEditName.querySelector('.popup__close');
@@ -11,7 +10,7 @@ const cardListElement = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('.template__card').content;
 const addButton = document.querySelector('.profile__button-add');
 const popupCards = document.querySelector('.popup-cards');
-const BtnSubmit = popupCards.querySelector('.popup__button-submit')
+const btnSubmit = popupEditName.querySelector('.popup__button-submit')
 const closePopupCards = popupCards.querySelector('.popup__close');
 const popupCardsForm = popupCards.querySelector('.popup__form');
 const toFormNameCards = popupCards.querySelector('.popup__input_type_name');
@@ -79,12 +78,12 @@ const addCard = evt => {
 }
 
 addButton.addEventListener('click', () => {
-        openPopup(popupCards);
-        disableButtonForm(BtnSubmit);
+    openPopup(popupCards);
 });
 
 editButton.addEventListener('click', () => {
     openPopupProfile(popupEditName);
+    enableButtonForm(btnSubmit);
 });
 
 closePopupEditNameButton.addEventListener('click', () => {
@@ -111,6 +110,7 @@ popupCardsForm.addEventListener('submit', (evt) => {
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
     document.addEventListener('keydown', handleEscKey);
+    document.addEventListener('click', handleClickOver);
 }
 
 function openPopupProfile(popupElement) {
@@ -122,6 +122,7 @@ function openPopupProfile(popupElement) {
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
     document.removeEventListener('keydown', handleEscKey);
+    document.removeEventListener('click', handleClickOver);
 }
 
 function submitPopupProfile(evt) {
@@ -136,13 +137,11 @@ const handleEscKey = (evt) => {
         const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     }
-};
+}
 
-page.addEventListener('click', (evt) => {
+const handleClickOver = (evt) => {
     if (evt.target.classList.contains('popup')) {
         closePopup(evt.target);
     }
-})
-
-
+}
 
