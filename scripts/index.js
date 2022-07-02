@@ -1,7 +1,6 @@
 const closeButtons = document.querySelectorAll('.popup__close');
 const popupEditName = document.querySelector('.popup-profile');
 const editButton = document.querySelector('.profile__button-edit');
-const closePopupEditNameButton = popupEditName.querySelector('.popup__close');
 const formPopupEditName = popupEditName.querySelector('.popup__form');
 const nameProfile = document.querySelector('.profile__name');
 const infoProfile = document.querySelector('.profile__text');
@@ -11,13 +10,12 @@ const cardListElement = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('.template__card').content;
 const addButton = document.querySelector('.profile__button-add');
 const popupCards = document.querySelector('.popup-cards');
-const cardSubmitBtn = popupCards.querySelector('.popup__button-submit')
-const closePopupCards = popupCards.querySelector('.popup__close');
+const cardSubmitBtn = popupCards.querySelector('.popup__button-submit');
+cardSubmitBtn.disabled = true;
 const popupCardsForm = popupCards.querySelector('.popup__form');
 const toFormNameCards = popupCards.querySelector('.popup__input_type_name');
 const toFormLinkCards = popupCards.querySelector('.popup__input_type_link');
 const popupElement = document.querySelector('.popup-element');
-const closePopupElement = popupElement.querySelector('.popup-element__close');
 const popupElemenImg = popupElement.querySelector('.popup-element__img');
 const popupElemetInfo = popupElement.querySelector('.popup-element__title');
 
@@ -86,7 +84,6 @@ editButton.addEventListener('click', () => {
     openPopupProfile(popupEditName);
 });
 
-
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
@@ -97,15 +94,9 @@ formPopupEditName.addEventListener('submit', (evt) => {
 });
 
 popupCardsForm.addEventListener('submit', (evt) => {
-    const name = toFormNameCards.value;
-    const link = toFormLinkCards.value;
-    if((name.length == 0) || (link.length == 0)){
-        disableButtonForm(cardSubmitBtn);
-    }else{
         addCard(evt);
         popupCardsForm.reset();
-    }
-    disableButtonForm(cardSubmitBtn);
+        disableButtonForm(cardSubmitBtn);
 });
 
 function openPopup(popupElement) {
