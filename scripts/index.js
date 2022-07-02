@@ -100,11 +100,12 @@ popupCardsForm.addEventListener('submit', (evt) => {
     const name = toFormNameCards.value;
     const link = toFormLinkCards.value;
     if((name.length == 0) || (link.length == 0)){
-        popupCardsForm.reset();
         disableButtonForm(cardSubmitBtn);
     }else{
         addCard(evt);
+        popupCardsForm.reset();
     }
+    disableButtonForm(cardSubmitBtn);
 });
 
 function openPopup(popupElement) {
