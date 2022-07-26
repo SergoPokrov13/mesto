@@ -1,36 +1,36 @@
- export class Card {
+class Card {
 
-    constructor(data, templateSelector, handleOpenImage) {
+    constructor(data, templateSelector, openImage) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._handleOpenImage = handleOpenImage;
+        this._openImage = openImage;
     }
 
     _getTemplate() {
         const card = document.querySelector(this._templateSelector)
-        .content.
-        querySelector('.element')
-        .cloneNode(true);
+            .content.
+            querySelector('.element')
+            .cloneNode(true);
 
         return card;
     }
 
-    _handleBtnLike() {
+    _buttonLike() {
         this._btnLike.classList.toggle('element__like_active')
     }
 
-    _handleBtnRemove() {
+    _buttonRemove() {
         this._card.remove();
     }
 
     _setEventListeners() {
-        this._btnLike.addEventListener('click', () => this._handleBtnLike());
-        this._btnRemove.addEventListener('click', () => this._handleBtnRemove());
-        this._image.addEventListener('click', () => this._handleOpenImage(this._name, this._link));
+        this._btnLike.addEventListener('click', () => this._buttonLike());
+        this._btnRemove.addEventListener('click', () => this._buttonRemove());
+        this._image.addEventListener('click', () => this._openImage(this._name, this._link));
     }
 
-    getElement() {
+    getEl() {
         this._card = this._getTemplate();
         this._btnLike = this._card.querySelector('.element__like');
         this._btnRemove = this._card.querySelector('.element__button-delete');
@@ -43,5 +43,6 @@
         this._setEventListeners();
         return this._card;
     }
-} 
+}
 
+export default Card;
