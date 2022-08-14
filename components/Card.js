@@ -1,16 +1,18 @@
 class Card {
 
-    constructor(data, templateSelector, openImage) {
+    constructor({data, templateSelector, cardClick}) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._openImage = openImage;
+        this._cardClick = cardClick;
     }
 
+    
+
     _getTemplate() {
-        const card = document.querySelector(this._templateSelector)
-            .content.
-            querySelector('.element')
+        const card = document.querySelector('.template__card')
+            .content
+            .querySelector('.element')
             .cloneNode(true);
 
         return card;
@@ -27,7 +29,7 @@ class Card {
     _setEventListeners() {
         this._btnLike.addEventListener('click', () => this._buttonLike());
         this._btnRemove.addEventListener('click', () => this._buttonRemove());
-        this._image.addEventListener('click', () => this._openImage(this._name, this._link));
+        this._image.addEventListener('click', () => this._cardClick(this._name, this._link));
     }
 
     getEl() {
