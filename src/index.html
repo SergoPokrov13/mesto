@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
     <title>Mesto</title>
 </head>
 
 <body class="page">
     <div class="root">
         <header class="header">
-            <img class="header__logo" src="./images/Logo.svg" alt="Логотип">
+            <img class="header__logo" src="<%=require('./images/Logo.svg')%>" alt="Логотип">
         </header>
 
         <main class="content">
             <section class="profile">
                 <div class="profile__columns">
-                    <img class="profile__avatar" src="./images/profile_logo.jpg" alt="Аватарка">
+                    <img class="profile__avatar" src="<%=require('./images/profile_logo.jpg')%>" alt="Аватарка">
                     <div class="profile__info">
                         <div class="profile__info-column">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -44,12 +44,12 @@
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form name="edit-form" class="popup__form" novalidate>
                     <div class="popup__input-container">
-                        <input id="name" name="name" required minlength="2" maxlength="40" type="text"
+                        <input id="name" name="profile-name" required minlength="2" maxlength="40" type="text"
                             class="popup__input popup__input_type_name">
                         <span class="popup__error-messege error-name"></span>
                     </div>
                     <div class="popup__input-container">
-                        <input id="job" name="job" required minlength="2" maxlength="200" type="text"
+                        <input id="job" name="profile-job" required minlength="2" maxlength="200" type="text"
                             class="popup__input popup__input_type_job">
                         <span class="popup__error-messege error-job"></span>
                     </div>
@@ -98,7 +98,7 @@
             </li>
         </template>
 
-        <script src="./pages/index.js" type="module"></script>
+        <!-- <script src="./pages/index.js" type="module"></script> -->
 
     </div>
 </body>

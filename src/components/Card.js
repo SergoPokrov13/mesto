@@ -24,6 +24,7 @@ class Card {
 
     _buttonRemove() {
         this._card.remove();
+        this._card = null;
     }
 
     _setEventListeners() {
