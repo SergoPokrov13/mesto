@@ -5,7 +5,7 @@ class Popup {
         this._escClose = this._escClose.bind(this);
     }
 
-    closePopup() {
+    close() {
         this._popup.classList.remove('popup_opened');
         document.removeEventListener('keydown', this._escClose);
     }
@@ -24,7 +24,7 @@ class Popup {
     setEventListeners() {
         this._popup.addEventListener('click', evt => {
             if (evt.target === this._popup || evt.target.classList.contains('popup__close')) {
-                this.closePopup();
+                this.close();
             }
         });
     }

@@ -1,5 +1,5 @@
 import Card from "../components/Card.js";
-import FormValidator from "../components/Formvalidate.js";
+import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
@@ -38,7 +38,7 @@ const section = new Section({
   }
 }, ListCard);
 
-section.initRender();
+section.renderCards();
 
 function getCard(dataElement) {
   const card = new Card({

@@ -5,7 +5,7 @@ export default class Section{
         this._container = ListCard;
 
     }
-    initRender() {
+    renderCards() {
         this._items.forEach(item => {
             const element = this._renderer(item);
             this.addEl(element);

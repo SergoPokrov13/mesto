@@ -1,6 +1,6 @@
 export const profileSelectors = {
-    name: '.profile__name',
-    job: '.profile__text'
+    nameSelector: '.profile__name',
+    jobSelector: '.profile__text'
 };
 
 export const initialCards = [{
