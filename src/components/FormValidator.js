@@ -26,6 +26,15 @@ class FormValidator {
             input.classList.add(this._config.inputErrorClass);
             inputErrorMessage.textContent = input.validationMessage;
         }
+        return inputErrorMessage;
+    }
+
+    removeErorrMessege(){
+        this._inputs.forEach(input => {
+        const inputErrorMessage = this._form.querySelector(`.error-${input.id}`);
+        input.classList.remove(this._config.inputErrorClass);
+        inputErrorMessage.textContent = '';
+        })
     }
 
     _toggleBtn() {

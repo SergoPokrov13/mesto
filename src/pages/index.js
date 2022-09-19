@@ -78,11 +78,13 @@ formProfileValidate.enableValidation();
 formCardValidate.enableValidation();
 
 editButton.addEventListener('click', () => {
+  formProfileValidate.removeErorrMessege();
   popupEditProfile.setInputValue(userInfo.getUserInfo());
   popupEditProfile.open();
 });
 
 addButton.addEventListener('click', () => {
+  formCardValidate.removeErorrMessege();
   formCardValidate.disableBtn();
   popupCardAdd.open();
 });

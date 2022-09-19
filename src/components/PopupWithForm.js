@@ -31,20 +31,7 @@ class PopupWithForm extends Popup {
         super.setEventListeners();
     }
 
-    _removeErorrMessege(){
-        const erorrInputs = this._form.querySelectorAll('.popup__input_type-error');
-        erorrInputs.forEach(erorrInput =>{
-            erorrInput.classList.remove('popup__input_type-error');
-        });
-
-        const erorrMesseges = this._form.querySelectorAll('.popup__error-messege');
-        erorrMesseges.forEach(erorrMessege =>{
-            erorrMessege.textContent = '';
-        });
-    }
-
     close() {
-        this._removeErorrMessege();
         this._form.reset();
         super.close();
     }

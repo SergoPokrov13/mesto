@@ -1,3 +1,5 @@
+import FormValidator from "../components/FormValidator.js";
+
 class Popup {
 
     constructor(popupSelector) {
