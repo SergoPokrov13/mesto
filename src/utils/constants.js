@@ -17,7 +17,7 @@ export const ListCard = document.querySelector('.elements__list');
 export const popupEditName = document.querySelector('.popup-profile');
 export const formPopupEditName = popupEditName.querySelector('.popup__form');
 
-const popupAvatar = document.querySelector('.popup__avatar');
+const popupAvatar = document.querySelector('.popup-avatar');
 export const popupAvatarForm = popupAvatar.querySelector('.popup__form');
 
 export const popupCard = document.querySelector('.popup-cards');

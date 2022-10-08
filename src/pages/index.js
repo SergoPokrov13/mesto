@@ -59,7 +59,7 @@ const popupCardAdd = new PopupWithForm({
 popupCardAdd.setEventListeners();
 
 const popupWithUpdateAvatar = new PopupWithForm({
-  popupSelector: '.popup__avatar',
+  popupSelector: '.popup-avatar',
   submitForm: (data) => {
     popupWithUpdateAvatar.loadingButtonForm(true);
     api.setUserAvatar(data['link'])
@@ -75,7 +75,7 @@ popupWithUpdateAvatar.setEventListeners();
 const popupWithImage = new PopupWithImage('.popup-element');
 popupWithImage.setEventListeners();
 
-const popupWithRemoveCard = new PopupWithRemove('.popup__remove');
+const popupWithRemoveCard = new PopupWithRemove('.popup-remove');
 popupWithRemoveCard.setEventListeners();
 
 function getCard(dataElement) {
