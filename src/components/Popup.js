@@ -1,5 +1,3 @@
-import FormValidator from "../components/FormValidator.js";
-
 class Popup {
 
     constructor(popupSelector) {
@@ -14,7 +12,7 @@ class Popup {
 
     _escClose(evt) {
         if (evt.key === 'Escape') {
-            this.closePopup();
+            this.close();
         }
     }
 
