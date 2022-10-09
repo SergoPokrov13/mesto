@@ -27,7 +27,6 @@ class PopupWithForm extends Popup {
             evt.preventDefault();
             const dataInputs = this._getInputValues();
             this._submitForm(dataInputs);
-            this.close();
         });
         super.setEventListeners();
     }
@@ -37,7 +36,7 @@ class PopupWithForm extends Popup {
         super.close();
     }
 
-    loadingButtonForm(bool) {
+    renderLoading(bool) {
         if (bool) {
             this._buttonSubmit.textContent = 'Сохранение...'
         } else {

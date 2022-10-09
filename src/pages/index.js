@@ -8,7 +8,7 @@ import PopupWithRemove from "../components/PopupWithRemove.js";
 import Api from "../components/Api.js";
 import "./index.css";
 import {
-  ListCard,
+  container,
   configValidate,
   profileSelectors,
   formPopupEditName,
@@ -28,18 +28,18 @@ const api = new Api({
 });
 
 const userInfo = new UserInfo(profileSelectors);
-const section = new Section(getCard, ListCard);
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup-profile',
   submitForm: (data) => {
-    popupEditProfile.loadingButtonForm(true);
+    popupEditProfile. renderLoading(true);
     api.setUserInfo(data)
     .then(data => {
       userInfo.setUserInfo(data);
+      popupEditProfile.close();
     })
     .catch(err => console.log(err))
-    .finally(() => popupEditProfile.loadingButtonForm(false));
+    .finally(() => popupEditProfile. renderLoading(false));
   }
 });
 popupEditProfile.setEventListeners();
@@ -47,13 +47,15 @@ popupEditProfile.setEventListeners();
 const popupCardAdd = new PopupWithForm({
   popupSelector: '.popup-cards',
   submitForm: (inputsData) => {
-    popupCardAdd.loadingButtonForm(true);
+    popupCardAdd. renderLoading(true);
     api.createCard(inputsData['name'], inputsData['link'])
     .then(data => {
-      section.addEl(data);
+      const section = new Section(data, getCard, container);
+      section.addEl();
+      popupCardAdd.close();
     })
     .catch(err => console.log(err))
-    .finally(() => popupCardAdd.loadingButtonForm(false));
+    .finally(() => popupCardAdd. renderLoading(false));
   }
 });
 popupCardAdd.setEventListeners();
@@ -61,13 +63,14 @@ popupCardAdd.setEventListeners();
 const popupWithUpdateAvatar = new PopupWithForm({
   popupSelector: '.popup-avatar',
   submitForm: (data) => {
-    popupWithUpdateAvatar.loadingButtonForm(true);
+    popupWithUpdateAvatar. renderLoading(true);
     api.setUserAvatar(data['link'])
     .then(data => {
       userInfo.setUserInfo(data);
+      popupWithUpdateAvatar.close();
     })
     .catch(err => console.log(err))
-    .finally(() => popupWithUpdateAvatar.loadingButtonForm(false));
+    .finally(() => popupWithUpdateAvatar. renderLoading(false));
   }
 });
 popupWithUpdateAvatar.setEventListeners();
@@ -126,6 +129,7 @@ addButton.addEventListener('click', () => {
 });
 
 avatar.addEventListener('click', () => {
+  formAvatarValidate.removeErorrMessege();
   formAvatarValidate.disableBtn();
   popupWithUpdateAvatar.open();
 });
@@ -133,6 +137,9 @@ avatar.addEventListener('click', () => {
 Promise.all([api.getCards(), api.getUserInfo()])
   .then(([cards, userData]) => {
     userInfo.setUserInfo(userData);
-    section.renderedCards(cards);
+    cards.reverse().forEach(card => {
+      const section = new Section(card, getCard, container);
+      section.addEl();
+    })
   })
   .catch(err => console.log(err));
