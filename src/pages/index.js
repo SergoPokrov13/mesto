@@ -28,6 +28,7 @@ const api = new Api({
 });
 
 const userInfo = new UserInfo(profileSelectors);
+const section = new Section(getCard, container);
 
 const popupEditProfile = new PopupWithForm({
   popupSelector: '.popup-profile',
@@ -50,8 +51,8 @@ const popupCardAdd = new PopupWithForm({
     popupCardAdd. renderLoading(true);
     api.createCard(inputsData['name'], inputsData['link'])
     .then(data => {
-      const section = new Section(data, getCard, container);
-      section.addEl();
+      const card = getCard(data);
+      section.addEl(card);
       popupCardAdd.close();
     })
     .catch(err => console.log(err))
@@ -137,9 +138,6 @@ avatar.addEventListener('click', () => {
 Promise.all([api.getCards(), api.getUserInfo()])
   .then(([cards, userData]) => {
     userInfo.setUserInfo(userData);
-    cards.reverse().forEach(card => {
-      const section = new Section(card, getCard, container);
-      section.addEl();
-    })
+    section.renderCards(cards);
   })
   .catch(err => console.log(err));
